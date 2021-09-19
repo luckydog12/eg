@@ -1,1 +1,1 @@
-<img src="http://luckydog314.ltd:8080/pic/homeSwipe.gif"  />
+[例子](http://luckydog314.ltd:8080/pic/homeSwipe.gif)
