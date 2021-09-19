@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    const handler = {
+      get(target, prop) {
+        console.log('get')
+        return Reflect.get(target, prop)
+      },
+      set(target, prop, val) {
+        console.log('set')
+        return true
+      },
+      deleteProperty(target, prop) {
+        console.log('delete')
+        return true
+      }
+    }
+
+    const shallowReadonly = (target) => {
+      if (target && typeof target === 'object') {
+        return new Proxy(target, handler)
+      }
+      return target
+    }
+
+    const readonly = (target) => {
+      if (target && typeof target === 'object') {
+        if (Array.isArray(target)) {
+          target.forEach((item, idx) => {
+            target[idx] = readonly(item)
+          })
+        } else {
+          Object.keys(target).forEach(key => {
+            target[key] = readonly(target[key])
+          })
+        }
+        return new Proxy(target, handler)
+      }
+      return target
+    }
+
+    const user = shallowReadonly({
+      name: 'luckydog',
+      car: {
+        color: 'red'
+      }
+    })
+    
+    const user2 = readonly({
+      name: 'luckydog1',
+      car: {
+        color: 'red1'
+      }
+    })
+    user2.car.color = 'fdfdfd'
+    console.log(user2.car.color)
+  </script>
+</body>
+
+</html>
