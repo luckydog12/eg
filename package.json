@@ -1,0 +1,24 @@
+{
+  "name": "eg",
+  "version": "1.0.0",
+  "description": "base js",
+  "main": "string.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon Array.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luckydog12/eg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luckydog12/eg/issues"
+  },
+  "homepage": "https://github.com/luckydog12/eg#readme",
+  "dependencies": {
+    "@types/node": "^16.10.2",
+    "nodemon": "^2.0.13"
+  }
+}

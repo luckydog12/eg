@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function TestClass() {
+        this.number = 123
+        this.string = "abc"
+        this.boolean = true
+        this.symbol = Symbol("test")
+        this.undefined = undefined
+        this.null = null
+        this.object = { name: "pp" }
+        this.object1 = this.object
+        this.array = [...new Array(10)].map(() => new Array(10).fill(0))
+        this.array[0][0] = 10
+        this.getSet = {
+          _value: 0,
+          get value() {
+            return this._value
+          },
+          set value(v) {
+            this._value = v
+          },
+        }
+      }
+      let testObject = new TestClass()
+    </script>
+  </body>
+</html>
