@@ -2,7 +2,8 @@
  * 题目1：编写一个 People 类，使其的实例具有监听事件、触发事件、解除绑定功能。
  * （实例可能监听多个不同的事件，也可以去除监听事件）
  */
-class People {
+class Peoplemmmmm {
+  // zyyyyyyyyyyyyyy
   constructor(name) {
     this.name = name
   }
@@ -20,15 +21,19 @@ class People {
   on(type) {
     // 获取需要添加绑定的函数
     let args = this.handleArgs.apply(null, [...arguments])
-    this.events[type] ? this.events[type].push(...args) : (this.events[type] = args)
+    this.events[type]
+      ? this.events[type].push(...args)
+      : (this.events[type] = args)
   }
   emit(type, ...params) {
-    if (!this.events[type] || !this.events[type].length) throw new Error("没有此类型事件")
+    if (!this.events[type] || !this.events[type].length)
+      throw new Error("没有此类型事件")
     this.events[type].forEach((item) => item.apply(this, [...params]))
   }
   // 解除绑定
   off(type) {
-    if (!this.events[type] || !this.events[type].length) throw new Error("没有此类型事件")
+    if (!this.events[type] || !this.events[type].length)
+      throw new Error("没有此类型事件")
     // 获取需要解除绑定的函数
     let args = this.handleArgs.apply(null, [...arguments])
     args.forEach((item) => {
