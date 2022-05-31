@@ -2,7 +2,7 @@
  * 题目1：编写一个 People 类，使其的实例具有监听事件、触发事件、解除绑定功能。
  * （实例可能监听多个不同的事件，也可以去除监听事件）
  */
-class Peoplemmmmm {
+class Peoplemmmm {
   // zyyyyyyyyyyyyyy
   constructor(name) {
     this.name = name
