@@ -1,0 +1,58 @@
+<!--
+ * @Author: luckydog
+ * @Date: 2022-02-17 22:25:05
+ * @LastEditTime: 2022-02-17 22:47:35
+ * @Description: 
+ * @FilePath: /eg/defineproperty.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let test = "test1"
+      let arr = [1, 2, 3]
+      let obj = {
+        arr,
+        test,
+      }
+
+      Object.defineProperty(obj, "arr", {
+        get: () => {
+          console.log("get")
+          return arr
+        },
+        set: (newVal) => {
+          console.log("set", newVal)
+          arr = newVal
+        },
+      })
+
+      Object.defineProperty(obj, "test", {
+        get: () => {
+          console.log("get")
+          return test
+        },
+        set: (newVal) => {
+          console.log("set")
+          test = newVal
+        },
+      })
+      // console.log(obj.test)
+      // obj.test = 1111111
+      // console.log(obj.test)
+
+      // console.log(obj.arr)
+      // obj.arr = [999]
+      // console.log(obj.arr)
+
+      obj.arr.push(99999)
+      console.log(obj.arr)
+    </script>
+  </body>
+</html>

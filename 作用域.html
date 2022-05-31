@@ -1,0 +1,36 @@
+<!--
+ * @Author: luckydog
+ * @Date: 2022-02-17 21:01:55
+ * @LastEditTime: 2022-02-17 21:06:00
+ * @Description: 
+ * @FilePath: /eg/作用域.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sunSched(thing) {
+        var sunSched = ""
+        var operation = {
+          setSched: function () {
+            sunsched = thing
+          },
+          showSched: function () {
+            console.log(thing)
+          },
+        }
+        return operation
+      }
+
+      var sunSched = sunSched("studying")
+      sunSched.setSched()
+      sunSched.showSched()
+    </script>
+  </body>
+</html>

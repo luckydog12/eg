@@ -1,0 +1,77 @@
+<!--
+ * @Author: luckydog
+ * @Date: 2022-03-05 12:14:35
+ * @LastEditTime: 2022-03-05 18:38:26
+ * @Description: 
+ * @FilePath: /eg/eg.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class People {
+        constructor(name) {
+          this.name = name
+        }
+        // 这里需要定义形如{type: [funtion1, funtion2]}类型，如果采用ts会更好
+        // events: Record<string, ((args: any) => void)[]> = {}
+        events = {}
+
+        handleArgs(...callback) {
+          let args = [...callback].slice(1)
+          // 如果args中存在不是函数的部分，这里不做抛出异常处理，直接过滤
+          args = args.filter((i) => typeof i === "function")
+          return args
+        }
+        // 监听 type为类型
+        on(type) {
+          console.log("dfdfdf", arguments)
+          let args = this.handleArgs.apply(null, [...arguments])
+          console.log(args)
+          this.events[type] ? this.events[type].push(...args) : (this.events[type] = args)
+        }
+
+        // 解除绑定
+        off(type) {
+          if (!this.events[type]) throw new Error("没有此类型事件")
+          // 获取需要解除绑定的函数
+          let args = [...arguments].slice(1)
+          args.forEach((item) => {
+            this.events[type].splice(this.events[type].indexOf(item), 1)
+          })
+        }
+        sayHi() {
+          console.log(`Hi, I am ${this.name}`)
+        }
+      }
+
+      /* 以下为测试代码 */
+      const say1 = (greeting) => {
+        console.log(`${greeting}, nice meeting you.`)
+      }
+
+      const say2 = (greeting) => {
+        console.log(`${greeting}, nice meeting you, too.`)
+      }
+      const jerry = new People("Jerry")
+      jerry.sayHi()
+      // => 输出：'Hi, I am Jerry'
+
+      jerry.on("greeting", say1)
+      // jerry.on("greeting", say2)
+
+      // jerry.emit('greeting', 'Hi')
+      // // => 输出：'Hi, nice meeting you.' 和 'Hi, nice meeting you, too'
+
+      // jerry.off("greeting", say1)
+      // jerry.emit('greeting', 'Hi')
+      // => 只输出：'Hi, nice meeting you, too'
+    </script>
+  </body>
+</html>

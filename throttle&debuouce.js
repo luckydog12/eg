@@ -6,8 +6,7 @@ function throttle1(fn, delay) {
     }
     value = false
     setTimeout(() => {
-      fn(),
-        value = true
+      fn(), (value = true)
     }, delay)
   }
 }

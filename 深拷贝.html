@@ -1,0 +1,58 @@
+<!--
+ * @Author: luckydog
+ * @Date: 2022-02-24 23:58:16
+ * @LastEditTime: 2022-02-25 00:27:38
+ * @Description: 
+ * @FilePath: /eg/深拷贝.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function deepClone(origin, target) {
+        target = target || {}
+        let toStr = Object.prototype.toString
+        let arrType = "[object Array]"
+
+        for (const key in origin) {
+          if (Object.hasOwnProperty.call(origin, key)) {
+            if (typeof origin[key] === "object" && origin[key] !== null) {
+              // 判断是否为数组
+              if (toStr.call(origin[key]) === arrType) {
+                target[key] = []
+              } else {
+                target[key] = {}
+              }
+              deepClone(origin[key], target[key])
+            } else {
+              target[key] = origin[key]
+            }
+          }
+        }
+        return target
+      }
+
+      let obj = {
+        a: 1,
+        b: {
+          b1: 2,
+          b2: [1],
+          b3: {
+            b4: 5,
+          },
+        },
+      }
+      let tar = deepClone(obj)
+      obj.a = 999
+      obj.b.b1 = 2222
+      console.log("origin", obj)
+      console.log("tar", tar)
+    </script>
+  </body>
+</html>

@@ -1,3 +1,10 @@
+/*
+ * @Author: luckydog
+ * @Date: 2021-09-25 18:32:08
+ * @LastEditTime: 2022-02-14 19:59:38
+ * @Description:
+ * @FilePath: /eg/string.js
+ */
 // let str = "1China.";
 // let pos1 = str.indexOf("China");
 // let pos2 = str.lastIndexOf('China')

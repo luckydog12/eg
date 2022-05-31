@@ -1,55 +1,68 @@
+<!--
+ * @Author: luckydog
+ * @Date: 2021-09-12 00:17:25
+ * @LastEditTime: 2022-02-17 22:57:13
+ * @Description: 
+ * @FilePath: /eg/proxy.html
+-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    let user = {
-      name: 'lukcydog',
-      age: 21,
-      wife: {
-        name: 'luckycat',
-        age: 18
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let user = {
+        name: "lukcydog",
+        arr: [1, 2],
+        age: 21,
+        wife: {
+          name: "luckycat",
+          age: 18,
+        },
       }
-    }
 
-    const proxyUser = new Proxy(user, {
-      get(target, prop) {
-        console.log('get方法被调用', target, prop)
-        return Reflect.get(target, prop)
-      },
-      set(target, prop, val) {
-        console.log('set方法被调用', target, prop,val)
-        return Reflect.set(target, prop, val)
-      },
-      deleteProperty(target, prop) {
-        console.log('delete方法被调用', target, prop)
-        return Reflect.deleteProperty(target, prop)
-      }
-    })
+      const proxyUser = new Proxy(user, {
+        get(target, prop) {
+          console.log("get方法被调用", target, prop)
+          return Reflect.get(target, prop)
+        },
+        set(target, prop, val) {
+          console.log("set方法被调用", target, prop, val)
+          return Reflect.set(target, prop, val)
+        },
+        deleteProperty(target, prop) {
+          console.log("delete方法被调用", target, prop)
+          return Reflect.deleteProperty(target, prop)
+        },
+      })
 
-    // 通过代理对象获取目标对象中的某个属性值
-    console.log(proxyUser.name)
+      // 通过代理对象获取目标对象中的某个属性值
+      // console.log(proxyUser.name)
 
-    // 通过代理对象更新目标对象上的某个属性值
-    proxyUser.name = 'LUCKYDOG'
-    console.log(user)
+      // 通过代理对象更新目标对象上的某个属性值
+      // proxyUser.name = "LUCKYDOG"
+      // console.log(proxyUser.name)
+      // console.log(user.name)
 
-    // 通过代理对象向目标对象中添加一个新的属性
-    proxyUser.gender = 'boy'
-    console.log(user)
+      // // 通过代理对象向目标对象中添加一个新的属性
+      // proxyUser.gender = "boy"
+      // console.log(proxyUser.gender)
+      // console.log(user.gender)
 
-    // 通过代理对象向目标对象中删除某一个属性
-    delete proxyUser.gender
-    console.log(user)
+      // // 通过代理对象向目标对象中删除某一个属性
+      // delete proxyUser.gender
+      // console.log(user)
 
-    // 更新目标对象中的属性
-    proxyUser.wife.name = 'vue3'
-    console.log(user)
-  </script>
-</body>
+      // // 更新目标对象中的属性
+      // proxyUser.wife.name = "vue3"
+      // console.log(proxyUser.wife.name)
+
+      proxyUser.arr.push(9999)
+      console.log(proxyUser.arr)
+    </script>
+  </body>
 </html>

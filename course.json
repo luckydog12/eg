@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "coursename": "course1"
+  },
+  {
+    "id": 2,
+    "coursename": "course2"
+  },
+  {
+    "id": 3,
+    "coursename": "course3"
+  },
+  {
+    "id": 4,
+    "coursename": "course4"
+  }
+]

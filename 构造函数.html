@@ -1,0 +1,65 @@
+<!--
+ * @Author: luckydog
+ * @Date: 2022-02-20 23:27:22
+ * @LastEditTime: 2022-02-22 22:48:39
+ * @Description: 
+ * @FilePath: /eg/构造函数.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function Test() {
+      //   let res = 0
+      //   this.a = function () {
+      //     console.log(res)
+      //   }
+      //   this.b = function () {
+      //     ++res
+      //     console.log(res)
+      //   }
+      // }
+      // let test = new Test()
+      // test.b()
+      // test.a()
+
+      // function Person() {}
+      // Person.prototype.name = "a"
+      // let person1 = new Person()
+      // console.log(person1.__proto__, Person.prototype)
+      // Person.prototype = {
+      //   name: "b",
+      // }
+      // console.log(person1.__proto__, Person.prototype)
+      // let person2 = new Person()
+      // console.log(person2.name)
+
+      // 继承
+      function Teacher() {
+        this.name = "teacher"
+      }
+      Teacher.prototype = {
+        pSkill: "js",
+      }
+
+      function Buffer() {}
+      Buffer.prototype = Teacher.prototype
+      let buffer = new Buffer()
+
+      function Student() {
+        this.name = "student"
+      }
+      Student.prototype = buffer
+      Student.prototype.age = 18
+
+      let s = new Student()
+      console.log(s)
+    </script>
+  </body>
+</html>
